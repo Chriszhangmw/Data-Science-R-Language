@@ -1,0 +1,58 @@
+raw.data <- read.csv("./mushrooms.csv")
+print(sprintf("Number of data rows: %d",nrow(raw.data)))
+print(sprintf("Number of data columns: %d",ncol(raw.data)))
+head(raw.data, n = 5)
+class <- plyr::count(raw.data$class)
+print(sprintf("Edible: %d | Poisonous: %d | Percent of poisonous classes: %.1f%%",class$freq[1],class$freq[2], round(class$freq[1]/nrow(raw.data)*100,1)))
+m.data = raw.data[,2:23]
+m.class = raw.data[,1]
+m.data <- sapply( m.data, function (x) as.numeric(as.factor(x)))
+train01<-read.csv("./mushrooms.csv")
+# Calculate number of class for each variable
+z<-cbind.data.frame(Var=names(train01), Total_Class=sapply(train01,function(x){as.numeric(length(levels(x)))}))
+print(z)
+train01$veil.type<-NULL
+
+library(ggplot2) # Data visualization
+install.packages('rpart.plot')
+library(readr) # CSV file I/O, e.g. the read_csv function
+library(caret)
+library(randomForest)
+library(caTools)   #<- For stratified split
+library(rpart)
+library(rpart.plot)
+
+
+
+set.seed(101) 
+sample = sample.split(train01$class, SplitRatio = .7)
+x_train = subset(train01, sample == TRUE)
+x_test = subset(train01, sample == FALSE)
+y_train<-x_train$class
+y_test <- x_test$class
+
+x_train$class<-NULL
+x_test$class<-NULL
+cv.10.folds<-createMultiFolds(y_train,k=10,times=2)
+ctrl.1<-trainControl(method="repeatedcv",number=10,repeats=2,index=cv.10.folds)
+rf.1.cv<-train(x=x_train,y=y_train,method="rf",trControl=ctrl.1,tuneLength=3)
+plot(varImp(rf.1.cv),main="Random Forest - Variable Importance Plot")
+y_predicted<-predict(rf.1.cv,x_test)
+df1<-data.frame(Orig=y_test,Pred=y_predicted)
+confusionMatrix(table(df1$Orig,df1$Pred)) 
+mod2<-train(x=x_train,y=y_train,method="gbm", trControl=ctrl.1,tuneLength=3,verbose=FALSE)
+plot(varImp(mod2),main="GBM - Variable Importance Plot")
+y_predicted<-predict(mod2,x_test)
+df1<-data.frame(Orig=y_test,Pred=y_predicted)
+confusionMatrix(table(df1$Orig,df1$Pred)) 
+mod3 <-train(x=x_train,y=y_train,method="rpart",trControl=ctrl.1,tuneLength=5)
+plot(varImp(mod3),main="RPART - Variable Importance Plot")
+rpart.plot(mod3$finalModel)
+install.packages("rattle")
+
+library(rattle)
+fancyRpartPlot(mod3$finalModel,main="Mushroom Attributes Classification",sub=NA,
+               palettes=c("Greys","Oranges"))
+y_predicted<-predict(mod3,x_test)
+df1<-data.frame(Orig=y_test,Pred=y_predicted)
+confusionMatrix(table(df1$Orig,df1$Pred)) #<- 100% accuracy again

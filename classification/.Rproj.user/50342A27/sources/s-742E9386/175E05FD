@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1571395135797.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "175E05FD",
+    "lastKnownWriteTime" : 1571395155,
+    "last_content_update" : 1571409706183,
+    "path" : "E:/R_Projects/classification/classification_script.R",
+    "project_path" : "classification_script.R",
+    "properties" : {
+        "cursorPosition" : "58,0",
+        "scrollLine" : "49",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
