@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1571391966469.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1977622090",
+    "id" : "A5F145E9",
+    "lastKnownWriteTime" : 1571394229,
+    "last_content_update" : 1571394229677,
+    "path" : "E:/R_Projects/regression_project/greesion_script.R",
+    "project_path" : "greesion_script.R",
+    "properties" : {
+        "cursorPosition" : "34,0",
+        "scrollLine" : "32",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
