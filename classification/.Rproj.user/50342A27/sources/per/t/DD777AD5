@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1572903432263.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3480610219",
+    "id" : "DD777AD5",
+    "lastKnownWriteTime" : 1572905334,
+    "last_content_update" : 1572905334716,
+    "path" : "E:/R_Projects/classification/redwine.R",
+    "project_path" : "redwine.R",
+    "properties" : {
+        "cursorPosition" : "0,27",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
